@@ -1,0 +1,21 @@
+<html>
+<head>
+  <title>Go-WASM</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+<script src="wasm_exec.js"></script>
+<script>
+  const go = new Go();
+  WebAssembly.instantiateStreaming(fetch('module.wasm'), go.importObject).then((result) => {
+    console.log('Exports', WebAssembly.Module.exports(result.module));
+    console.log('Imports', WebAssembly.Module.imports(result.module));
+    go.run(result.instance);
+    console.log('add', result.instance.exports.add(10, 20));
+    // not defined, only works with tinygo
+    // https://github.com/golang/go/issues/25612
+    // https://github.com/golang/go/issues/42372
+  });
+</script>
+</body>
+</html>
