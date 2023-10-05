@@ -1,0 +1,12 @@
+
+module.wasm:	file format wasm 0x1
+
+Section Details:
+
+Memory[1]:
+ - memory[0] pages: initial=1 max=10
+Export[1]:
+ - memory[0] -> "memory"
+Data[1]:
+ - segment[0] memory=0 size=4 - init i32=0
+  - 0000000: 0102 0304                                ....
